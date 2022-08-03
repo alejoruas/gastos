@@ -29,11 +29,6 @@ public abstract class StringValueObject {
         if (getClass() != obj.getClass())
             return false;
         StringValueObject other = (StringValueObject) obj;
-        if (valor == null) {
-            if (other.valor != null)
-                return false;
-        } else if (!valor.equals(other.valor))
-            return false;
-        return true;
+        return Objects.equals(valor, other.valor);
     }   
 }
