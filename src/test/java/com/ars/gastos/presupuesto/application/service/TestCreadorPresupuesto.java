@@ -7,7 +7,7 @@ import com.ars.gastos.presupuesto.application.puerto.in.CreadorPresupuestoComman
 import com.ars.gastos.presupuesto.application.puerto.in.CreadorPresupuestoRequest;
 import com.ars.gastos.presupuesto.application.servicio.CreadorPresupuesto;
 import com.ars.gastos.presupuesto.domain.Presupuesto;
-import com.ars.gastos.presupuesto.domain.PresupuestoMother;
+import com.ars.gastos.presupuesto.domain.PresupuestoNombreMother;
 
 public final class TestCreadorPresupuesto extends CreadorPresupuestoUnitTest {
     CreadorPresupuesto creador;
@@ -19,19 +19,16 @@ public final class TestCreadorPresupuesto extends CreadorPresupuestoUnitTest {
     }
 
     @Test
-    void save_valid_course() {      
+    void save_valid_course() {            
         
-        Presupuesto presupuesto = PresupuestoMother.random();
-
         CreadorPresupuestoRequest request = 
-            new CreadorPresupuestoRequest(
-                presupuesto.id().Valor(), 
-                presupuesto.nombre().valor(), 
-                presupuesto.valor().valor());
+            new CreadorPresupuestoRequest( 
+                PresupuestoNombreMother.random().valor(), 
+                600000d);
 
         CreadorPresupuestoCommand command = new CreadorPresupuestoCommand(request);
 
-        creador.crearPresupuesto(command);
+        Presupuesto presupuesto = creador.crearPresupuesto(command);
 
         shouldHaveSaved(presupuesto);
     }

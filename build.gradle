@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.ars'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+sourceCompatibility = '11'
 
 repositories {
 	mavenCentral()
@@ -15,7 +15,9 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation group: 'org.springframework', name: 'spring-web', version: '4.3.11.RELEASE'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'	
 }
 
 tasks.named('test') {

@@ -1,5 +1,8 @@
 package com.ars.gastos.presupuesto.application.servicio;
 
+import java.util.UUID;
+
+import com.ars.gastos.common.service.Service;
 import com.ars.gastos.presupuesto.application.puerto.in.CreadorPresupuestoCommand;
 import com.ars.gastos.presupuesto.application.puerto.in.CreadorPresupuestoUseCase;
 import com.ars.gastos.presupuesto.application.puerto.out.PresupuestoRepository;
@@ -8,6 +11,7 @@ import com.ars.gastos.presupuesto.domain.PresupuestoId;
 import com.ars.gastos.presupuesto.domain.PresupuestoNombre;
 import com.ars.gastos.presupuesto.domain.PresupuestoValor;
 
+@Service
 public final class CreadorPresupuesto implements CreadorPresupuestoUseCase{
     private PresupuestoRepository repositorio;
     
@@ -16,11 +20,10 @@ public final class CreadorPresupuesto implements CreadorPresupuestoUseCase{
     }
 
     @Override
-    public boolean crearPresupuesto(CreadorPresupuestoCommand command) {
-        PresupuestoId id = new PresupuestoId(command.request().id());
+    public Presupuesto crearPresupuesto(CreadorPresupuestoCommand command) {
+        PresupuestoId id = new PresupuestoId(UUID.randomUUID().toString());
         PresupuestoNombre nombre = new PresupuestoNombre(command.request().nombre());
-        PresupuestoValor valor = new PresupuestoValor(command.request().valor());
-        Presupuesto.create(id, nombre, valor, repositorio);
-        return true;
+        PresupuestoValor valor = new PresupuestoValor(command.request().valor());        
+        return Presupuesto.create(id, nombre, valor, repositorio);
     }
 }

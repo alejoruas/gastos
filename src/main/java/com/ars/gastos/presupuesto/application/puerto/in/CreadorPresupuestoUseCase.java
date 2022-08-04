@@ -1,5 +1,7 @@
 package com.ars.gastos.presupuesto.application.puerto.in;
 
+import com.ars.gastos.presupuesto.domain.Presupuesto;
+
 public interface CreadorPresupuestoUseCase {
-    boolean crearPresupuesto(CreadorPresupuestoCommand command);  
+    Presupuesto crearPresupuesto(CreadorPresupuestoCommand command);  
 }

@@ -1,6 +1,6 @@
 package com.ars.gastos.presupuesto.domain;
 
-import org.springframework.boot.autoconfigure.cassandra.CassandraProperties.Request;
+import java.util.UUID;
 
 import com.ars.gastos.presupuesto.application.puerto.in.CreadorPresupuestoRequest;
 
@@ -12,7 +12,7 @@ public final class PresupuestoMother {
 
     public static Presupuesto fromRequest(CreadorPresupuestoRequest request) {
         return create(
-            PresupuestoIdMother.create(request.id()),
+            PresupuestoIdMother.create(UUID.randomUUID().toString()),
             PresupuestoNombreMother.create(request.nombre()),
             PresupuestoValorMother.create(request.valor())
         );
