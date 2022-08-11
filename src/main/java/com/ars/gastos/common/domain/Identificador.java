@@ -14,7 +14,7 @@ public abstract class Identificador implements Serializable{
 
     protected Identificador() { this.valor = null; }
 
-    public String Valor() { return this.valor; }
+    public String valor() { return this.valor; }
 
     private void esValidUuid(String valor) throws IllegalArgumentException {
         UUID.fromString(valor);

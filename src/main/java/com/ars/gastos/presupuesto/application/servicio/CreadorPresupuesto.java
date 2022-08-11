@@ -2,6 +2,8 @@ package com.ars.gastos.presupuesto.application.servicio;
 
 import java.util.UUID;
 
+import org.springframework.stereotype.Component;
+
 import com.ars.gastos.common.service.Service;
 import com.ars.gastos.presupuesto.application.puerto.in.CreadorPresupuestoCommand;
 import com.ars.gastos.presupuesto.application.puerto.in.CreadorPresupuestoUseCase;
@@ -12,6 +14,7 @@ import com.ars.gastos.presupuesto.domain.PresupuestoNombre;
 import com.ars.gastos.presupuesto.domain.PresupuestoValor;
 
 @Service
+@Component
 public final class CreadorPresupuesto implements CreadorPresupuestoUseCase{
     private PresupuestoRepository repositorio;
     

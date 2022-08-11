@@ -2,6 +2,7 @@ package com.ars.gastos.presupuesto.domain;
 
 import java.util.UUID;
 
+import com.ars.gastos.common.service.TrackTransaction;
 import com.ars.gastos.presupuesto.application.puerto.out.PresupuestoRepository;
 
 public final class Presupuesto {
@@ -25,7 +26,15 @@ public final class Presupuesto {
     public static Presupuesto create(PresupuestoId id, PresupuestoNombre nombre, PresupuestoValor valor, PresupuestoRepository repositorio) {
         Presupuesto presupuesto = new Presupuesto(new PresupuestoId(UUID.randomUUID().toString()), nombre, valor);
 
-        repositorio.guardar(presupuesto);
+        TrackTransaction transaction = new TrackTransaction("SAVE " + id.valor());
+        transaction.beginTransaction();
+
+        repositorio.save(presupuesto);
+
+        transaction.finishTransaction();
+
+        System.out.println(transaction.printInfoTransactionNanos());
+        System.out.println(transaction.printInfoTransactionMilis());        
         //TODO: generar evento de Presupuesto creado
         return presupuesto;
     }

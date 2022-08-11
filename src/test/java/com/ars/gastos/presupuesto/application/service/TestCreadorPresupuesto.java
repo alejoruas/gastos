@@ -9,7 +9,7 @@ import com.ars.gastos.presupuesto.application.servicio.CreadorPresupuesto;
 import com.ars.gastos.presupuesto.domain.Presupuesto;
 import com.ars.gastos.presupuesto.domain.PresupuestoNombreMother;
 
-public final class TestCreadorPresupuesto extends CreadorPresupuestoUnitTest {
+public final class TestCreadorPresupuesto extends PresupuestoUnitTest {
     CreadorPresupuesto creador;
 
     @BeforeEach
@@ -19,7 +19,7 @@ public final class TestCreadorPresupuesto extends CreadorPresupuestoUnitTest {
     }
 
     @Test
-    void save_valid_course() {            
+    void save_valid_presupuesto() {            
         
         CreadorPresupuestoRequest request = 
             new CreadorPresupuestoRequest( 
